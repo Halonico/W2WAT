@@ -1,0 +1,39 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-app-preferences": {
+            "PACKAGE_NAME": "com.FrozenGear.W2WAT"
+        },
+        "cordova-plugin-bluetooth-serial": {
+            "PACKAGE_NAME": "com.FrozenGear.W2WAT"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.FrozenGear.W2WAT"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.FrozenGear.W2WAT"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.FrozenGear.W2WAT"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.FrozenGear.W2WAT"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.FrozenGear.W2WAT"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.FrozenGear.W2WAT"
+        },
+        "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.FrozenGear.W2WAT"
+        }
+    },
+    "dependent_plugins": {}
+}
