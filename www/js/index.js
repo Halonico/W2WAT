@@ -237,9 +237,9 @@ var Route = function()
 var Navigator = function()
 {
   var index=0;
-  var test=1;
+  var step1=0;
+  var step2=0;
   var distance=0;
-  var speed=1;
   var polyLine=map1.getPolyLine();
   var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 300000,enableHighAccuracy: true });
   function clear()
@@ -263,33 +263,29 @@ var Navigator = function()
     {
         window.plugins.toast.show("Recalculate", 'long', 'bottom');
         var desti = guide1.getDestination(); 
-        guide1.clear();
-        guide1.calculate((position.coords.latitude+","+position.coords.longitude),desti,config.getLocomotion());
+        guide1.clear(); guide1.calculate((position.coords.latitude+","+position.coords.longitude),desti,config.getLocomotion());
         index=0;
-        test=1;
-        distance=0;
-        speed= position.coords.speed/10;
-        if(speed<1)
-        {
-            speed=1;
-        }
+        step1=0;
+        step2=0;
+        distance=4;
         polyLine=map1.getPolyLine();
     }
-    if((test==1)&&((distance=>(0.05*speed))&&(distance<=(0.1*speed))))
+    if((step1==0)&&(distance<=0.025))
     {
-      sendMessageToSerial(guide1.getManeuvers(index),test);
-      test=2;
+      sendMessageToSerial(guide1.getManeuvers(index),3);
+      step1=1;
     }
-    else if((test==2)&&((distance=>(0.025*speed))&&(distance<=(0.05*speed))))
+    else if((step2==0)&&(distance<=0.05))
     {
-      sendMessageToSerial(guide1.getManeuvers(index),test);
-      test=3;
+      sendMessageToSerial(guide1.getManeuvers(index),2);
+      step2=1;
     }
-    else if(((test==3)&&((distance=>0)&&(distance<=(0.025*speed)))))
+    else if(distance<=0.1)
     {
-      sendMessageToSerial(guide1.getManeuvers(index),test);
+      sendMessageToSerial(guide1.getManeuvers(index),1);
       index++;
-      test=1;
+      step1=0;
+      step2=0;
       
     }
   }
@@ -366,43 +362,43 @@ var Navigator = function()
         bluetoothSerial.write('b'+distance);
       break;
       case "1":
-        if(test==1)
+        if(distance==2)
         {
           bluetoothSerial.write('1'+4);
         }
       break;
       case "2":
-        if(test==1)
+        if(distance==2)
         {
           bluetoothSerial.write('2'+4);
         }
       break;
       case "3":
-        if(test==1)
+        if(distance==2)
         {
           bluetoothSerial.write('3'+4);
         }
       break;
       case "4":
-        if(test==1)
+        if(distance==2)
         {
           bluetoothSerial.write('4'+4);
         }
       break;
       case "5":
-        if(test==1)
+        if(distance==2)
         {
           bluetoothSerial.write('5'+4);
         }
       break;
       case "6":
-        if(test==1)
+        if(distance==2)
         {
            bluetoothSerial.write('6'+4);
         }
       break;
       case "7":
-        if(test==1)
+        if(distance==2)
         {
           bluetoothSerial.write('7'+4);
         }
