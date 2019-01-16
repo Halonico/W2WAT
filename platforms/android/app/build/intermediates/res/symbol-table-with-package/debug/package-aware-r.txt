@@ -1,0 +1,10 @@
+com.FrozenGear.W2WAT
+int array apppreferences_lang 0x7f010000
+int array apppreferences_langValues 0x7f010001
+int drawable screen 0x7f020000
+int mipmap icon 0x7f030000
+int string activity_name 0x7f040000
+int string app_name 0x7f040001
+int string launcher_name 0x7f040002
+int xml apppreferences 0x7f050000
+int xml config 0x7f050001

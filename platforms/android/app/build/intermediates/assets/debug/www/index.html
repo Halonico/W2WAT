@@ -1,0 +1,56 @@
+
+<html>
+    <head>
+        
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>W2W</title>
+        
+        <script type="text/javascript">
+    window.onerror = function(message, url, lineNumber) {
+        alert("Error: "+message+" in "+url+" at line "+lineNumber);
+    }
+</script>
+    </head>
+    <body>
+        <header>
+            <a onclick="(function(){showIndex();})()"><div id="previous"><img class="svgImages" src="img/leftArrow.svg" alt="leftArrow"/></div></a>
+            <a onclick="(function(){showOption();})()"><div id="option"><img class="svgImages" src="img/gear.svg" alt="gear"/></div></a>
+            <img id="logo" src="img/logo.png" alt="logo"/>
+            
+        </header>
+        <section id="index_panel">
+            <h1>Start</h1>
+            <input class="center" type="text" name="start" id="start"/>
+            <button id="myposition" class="center" type="button" onclick="(function(){map1.getMyPosition();})()" disabled>From my position</button>
+            <h1>End</h1>
+            <input class="center" type="text" name="end" id="end"/>
+            <button class="center" onclick="(function(){guide1.calculate(document.getElementById('start').value,document.getElementById('end').value,config.getLocomotion());showGO();})()" type="button">CALCULATE</button>
+        </section>
+        <section id="option_panel">
+            <h1>Preferences</h1>
+            <h2>Mode</h2>
+            <SELECT id="pref" class="center">
+              <OPTION id="driving">driving</OPTION>
+              <OPTION id="walking">walking</OPTION>
+              <OPTION id="bicycling">bicycling</OPTION>
+              <OPTION id="transit">transit</OPTION>
+            </SELECT>
+            <h2>Key</h2>
+            <input type="text" class="center" name="key" id="key" value="AIzaSyDwy0-1F3nfwc0oC8oYq00yWuBN33T5coo"/>
+            <h2>Bluetooth MAC adress</h2>
+            <input type="text" class="center" name="btMac" id="btMac" value="98:D3:31:60:05:D1"/>
+            <button class="center" id="save" onclick="(function(){config.save();})()">SAVE</button>
+        </section>
+        <section id="GO_panel">
+            <button class="center" onclick="(function(){bluetoothSerial.connect(config.getBluetoothAdress(), function(){}, function(){}); navigator1 = new Navigator();})()" type="button">GO</button>
+            <div id="map">
+
+            </div>
+        </section>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
